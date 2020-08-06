@@ -7,14 +7,15 @@
     "start": "node app.js",
     "dev": "nodemon app.js"
   },
+  "engines": {
+    "node": "12.16.1"
+  },
   "author": "Eugene",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.2",
     "dotenv": "^8.2.0",
     "node-telegram-bot-api": "^0.50.0",
-    "puppeteer": "^5.2.1",
-    "vercel": "^19.2.0"
+    "puppeteer": "^5.2.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
