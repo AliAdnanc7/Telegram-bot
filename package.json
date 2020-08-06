@@ -13,7 +13,8 @@
     "axios": "^0.19.2",
     "dotenv": "^8.2.0",
     "node-telegram-bot-api": "^0.50.0",
-    "puppeteer": "^5.2.1"
+    "puppeteer": "^5.2.1",
+    "vercel": "^19.2.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
