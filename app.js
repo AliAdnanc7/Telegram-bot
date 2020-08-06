@@ -4,6 +4,11 @@ const token = process.env.TELEGRAM_TOKEN
 const bot = new telegramBot(token, {polling:true})
 const scrape = require('./scrapers.js')
 
+const http = require('http')
+const handle = (req, res) => res.end("hit")
+const server = http.createServer(handle)
+server.listen = process.env.PORT || 5000
+
 const waitMessage = (chatId) => {
     bot.sendMessage(chatId, '*Подождите ...*', {parse_mode: 'Markdown'})
 }
