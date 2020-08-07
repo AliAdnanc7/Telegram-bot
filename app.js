@@ -16,33 +16,38 @@ const randomAnime = (chatId) => {
     waitMessage(chatId)
 
         scrape('https://yummyanime.club/random', async page => {
-            const [el] = await page.$x('/html/body/div[3]/div[3]/div/div/div[1]/div[1]/img')
-            const src = await el.getProperty('src')
-            const imgUrl = await src.jsonValue()
-        
-            const [el2] = await page.$x('/html/body/div[3]/div[3]/div/div/h1')
-            const txt = await el2.getProperty('textContent')
-            let title = await txt.jsonValue()
-            title = title.trim()
+            try {
+                
+                const [el] = await page.$x('/html/body/div[3]/div[3]/div/div/div[1]/div[1]/img')
+                const src = await el.getProperty('src')
+                const imgUrl = await src.jsonValue()
+            
+                const [el2] = await page.$x('/html/body/div[3]/div[3]/div/div/h1')
+                const txt = await el2.getProperty('textContent')
+                let title = await txt.jsonValue()
+                title = title.trim()
 
-            const [el3] = await page.$x('/html/body/div[3]/div[3]/div/div/div[2]/span[2]/span[1]')
-            const txt2 = await el3.getProperty('textContent')
-            const rating = await txt2.jsonValue()
+                const [el3] = await page.$x('/html/body/div[3]/div[3]/div/div/div[2]/span[2]/span[1]')
+                const txt2 = await el3.getProperty('textContent')
+                const rating = await txt2.jsonValue()
 
-            const [el4] = await page.$x('/html/body/div[3]/div[3]/div/div/ul[2]/li[6]/ul')
-            const txt3 = await el4.getProperty('innerText')
-            let genres = await txt3.jsonValue()
-            genres = genres.replace(/\n\s\n/g, ', ')
+                const [el4] = await page.$x('/html/body/div[3]/div[3]/div/div/ul[2]/li[6]/ul')
+                const txt3 = await el4.getProperty('innerText')
+                let genres = await txt3.jsonValue()
+                genres = genres.replace(/\n\s\n/g, ', ')
 
-            const [el5] = await page.$x('//*[@id="content-desc-text"]/p')
-            const txt5 = await el5.getProperty('textContent')
-            const description = await txt5.jsonValue()
+                const [el5] = await page.$x('//*[@id="content-desc-text"]/p')
+                const txt5 = await el5.getProperty('textContent')
+                const description = await txt5.jsonValue()
 
-            const [el6] = await page.$x('/html/body/div[3]/div[3]/div/div/ul[2]/li[3]/text()')
-            const txt6 = await el6.getProperty('textContent')
-            const year = await txt6.jsonValue()
+                const [el6] = await page.$x('/html/body/div[3]/div[3]/div/div/ul[2]/li[3]/text()')
+                const txt6 = await el6.getProperty('textContent')
+                const year = await txt6.jsonValue()
 
-            bot.sendPhoto(chatId, imgUrl, {caption: `${title}(${year})\n⭐️${rating} / 10\n🏷Жанры: ${genres}\n📄Описание: ${description}`})
+                bot.sendPhoto(chatId, imgUrl, {caption: `${title}(${year})\n⭐️${rating} / 10\n🏷Жанры: ${genres}\n📄Описание: ${description}`})
+            } catch (error) {
+                console.log(error)
+            }
         })
 }
 
