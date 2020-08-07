@@ -1,1 +1,1 @@
-ENV_SILENT=true npm start
+web: node app.js
