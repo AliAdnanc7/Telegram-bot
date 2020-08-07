@@ -8,7 +8,7 @@
     "dev": "nodemon app.js"
   },
   "engines": {
-    "node": "12.16.1"
+    "node": "v12.16.1"
   },
   "author": "Eugene",
   "license": "ISC",
