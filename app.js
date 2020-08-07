@@ -145,7 +145,6 @@ var options = {
             if(func.userInput === false)
                 return [{text: func.text, callback_data: func.callback_data}]
         })
-      
     })
 }
 
