@@ -17,21 +17,21 @@ const waitMessage = (chatId) => {
 bot.on("message",function(msg){
 console.log(msg)
   bot.sendMessage(msg.chat.id,'Hi')
- 
+  bot.sendPhoto(msg.chat.id,'./example.png')
     (async () => {
         const browser = await puppeteer.launch();
         const page = await browser.newPage();
         await page.goto(msg.text);
         await page.screenshot({path: 'example.png'});
         bot.sendPhoto(msg.chat.id,'./example.png')
-        await browser.close();
+      
       })();
 });
 const randomAnime = (chatId) => {
     waitMessage(chatId)
 
         scrape('https://yummyanime.club/random', async page => {
-                     await page.screenshot({path: './example.png'});
+               
             const [el] = await page.$x('/html/body/div[3]/div[3]/div/div/div[1]/div[1]/img')
             const src = await el.getProperty('src')
             const imgUrl = await src.jsonValue()
