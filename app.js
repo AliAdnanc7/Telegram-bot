@@ -12,6 +12,7 @@ const waitMessage = (chatId) => {
     bot.sendMessage(chatId, '*Подождите ...*', {parse_mode: 'Markdown'})
 }
 
+
 const randomAnime = (chatId) => {
     waitMessage(chatId)
 
