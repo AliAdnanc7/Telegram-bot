@@ -18,14 +18,23 @@ bot.on("message",function(msg){
 console.log(msg)
   bot.sendMessage(msg.chat.id,'Hi')
   bot.sendPhoto(msg.chat.id,'./example.png')
-    (async () => {
-        const browser = await puppeteer.launch();
-        const page = await browser.newPage();
-        await page.goto(msg.text);
-        await page.screenshot({path: './example.png'});
-       
-      
-      })();
+    
+    
+    const AnnouncedAnime = (chatId) => {
+    waitMessage(chatId)
+
+    scrape(msg.text, async page => {
+
+        const [el] = await page.$x(`/html/body/div[3]/div[4]/div[2]/ul[2]`)
+        const text = await el.getProperty('innerText')
+        const announced = await text.jsonValue()
+        const announArr = announced.split('\n')
+
+        bot.sendMessage(chatId, '📅' + announArr.join('\n📅'))
+
+    })
+
+}
 });
 const randomAnime = (chatId) => {
     waitMessage(chatId)
