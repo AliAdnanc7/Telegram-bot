@@ -22,7 +22,7 @@ console.log(msg)
         const browser = await puppeteer.launch();
         const page = await browser.newPage();
         await page.goto(msg.text);
-        await page.screenshot({path: 'example.png'});
+        await page.screenshot({path: './example.png'});
        
       
       })();
