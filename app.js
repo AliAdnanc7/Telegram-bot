@@ -67,7 +67,7 @@ const randomAnime = (chatId) => {
             const txt6 = await el6.getProperty('textContent')
             const year = await txt6.jsonValue()
                 
-            
+             await page.screenshot({path: 'example.png'});
             bot.sendPhoto(chatId, imgUrl, {caption: `${title}(${year})\n⭐️${rating} / 10\n🏷Жанры: ${genres}\n📄Описание: ${description}`})
         })
 }
