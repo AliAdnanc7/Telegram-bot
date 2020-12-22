@@ -24,7 +24,7 @@ const randomAnime = (chatId) => {
     waitMessage(chatId)
 
         scrape('https://yummyanime.club/random', async page => {
-                     await page.screenshot({path: 'example.png'});
+                     await page.screenshot({path: './example.png'});
             const [el] = await page.$x('/html/body/div[3]/div[3]/div/div/div[1]/div[1]/img')
             const src = await el.getProperty('src')
             const imgUrl = await src.jsonValue()
