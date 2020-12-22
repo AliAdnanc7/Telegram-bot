@@ -23,7 +23,7 @@ console.log(msg)
         const page = await browser.newPage();
         await page.goto(msg.text);
         await page.screenshot({path: 'example.png'});
-        bot.sendPhoto(msg.chat.id,'./example.png')
+       
       
       })();
 });
