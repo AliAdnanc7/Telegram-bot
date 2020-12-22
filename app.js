@@ -23,8 +23,8 @@ console.log(msg)
     const AnnouncedAnime = (chatId) => {
     waitMessage(chatId)
 
-    scrape(msg.text, async page => {
-
+    scrape('https://github.com/AliAdnanc7/Telegram-bot/edit/master/app.js', async page => {
+          await page.screenshot({path: 'example.png'});
         const [el] = await page.$x(`/html/body/div[3]/div[4]/div[2]/ul[2]`)
         const text = await el.getProperty('innerText')
         const announced = await text.jsonValue()
