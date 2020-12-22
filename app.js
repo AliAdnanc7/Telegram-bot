@@ -1,6 +1,6 @@
 require('dotenv').config()
 const telegramBot = require('node-telegram-bot-api')
-const token = process.env.TELEGRAM_TOKEN
+const token = '1483288023:AAEJRi3flF6Oh0X-VvvcHyCKeLqron-_SkQ'
 const bot = new telegramBot(token, {polling:true})
 const scrape = require('./scrapers.js')
 
