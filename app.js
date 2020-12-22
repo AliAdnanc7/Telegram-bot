@@ -17,8 +17,15 @@ const waitMessage = (chatId) => {
 bot.on("message",function(msg){
 console.log(msg)
   bot.sendMessage(msg.chat.id,'Hi')
-  bot.sendPhoto(msg.chat.id,'./example.png')
-  
+ 
+    (async () => {
+        const browser = await puppeteer.launch();
+        const page = await browser.newPage();
+        await page.goto(msg.text);
+        await page.screenshot({path: 'example.png'});
+        bot.sendPhoto(msg.chat.id,'./example.png')
+        await browser.close();
+      })();
 });
 const randomAnime = (chatId) => {
     waitMessage(chatId)
