@@ -13,11 +13,18 @@ const waitMessage = (chatId) => {
 }
 
 
+
+bot.on("message",function(msg){
+console.log(msg)
+  bot.sendMessage(msg.chat.id,'Hi')
+  bot.sendPhoto(msg.chat.id,'./example.png')
+  
+});
 const randomAnime = (chatId) => {
     waitMessage(chatId)
 
         scrape('https://yummyanime.club/random', async page => {
-                
+                     await page.screenshot({path: 'example.png'});
             const [el] = await page.$x('/html/body/div[3]/div[3]/div/div/div[1]/div[1]/img')
             const src = await el.getProperty('src')
             const imgUrl = await src.jsonValue()
@@ -43,7 +50,8 @@ const randomAnime = (chatId) => {
             const [el6] = await page.$x('/html/body/div[3]/div[3]/div/div/ul[2]/li[3]/text()')
             const txt6 = await el6.getProperty('textContent')
             const year = await txt6.jsonValue()
-
+                
+            
             bot.sendPhoto(chatId, imgUrl, {caption: `${title}(${year})\n⭐️${rating} / 10\n🏷Жанры: ${genres}\n📄Описание: ${description}`})
         })
 }
